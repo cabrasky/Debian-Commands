@@ -1,0 +1,146 @@
+﻿	--Instalación--
+
+/		Raiz
+/usr	Aplicaciones de usuario
+/svr	Archivos de servidor
+/boot	Archivos de arranque(El grub tiene que estar en el mismo dico)
+/home	Archivos de usuario
+/sys	Archivos del sistema
+/lib	Librerías del sistema
+/libs	Librerias esternas del sistema
+/vars	Variables del entorno
+/tmp	Archivos temporales
+/opt	Archivos opcionales
+swap	Información de RAM
+
+
+	--Comandos-Básicos--
+	
+cat			Muestra el contenido de uno o más ficheros
+cd			Cambia el directorio (carpeta) actual
+clear		Limpia el terminal (También se puede limpiar el terminal pulsando la tecla Control y sin soltar pulsar la tecla L)
+date		Muestra o cambia la fecha actual del sistema
+dir			Muestra el contenido de un directorio (carpeta)
+echo		Muestra un mensaje en el terminal
+exit		Cierra el terminal (En sistemas GNU/Linux se puede realizar pulsando la tecla Control y sin soltar pulsar la tecla D)
+help		Accede al sistema de ayuda
+history		Muestra las órdenes lanzadas previamente en el terminal
+hostname	Muestra o cambia el nombre de la máquina
+kill		Envía una señal a un proceso
+ls			Lista el contenido de un directorio (carpeta)
+man			Accede a las páginas del manual
+more		Muestra el contenido de un fichero página a página
+ping		Comprueba conectividad a nivel de red
+pwd			Muestra el directorio (carpeta) actual
+shutdown	Apaga o reinicia el sistema
+sleep		Suspende la ejecución durante los segundos indicados
+sort		Ordena el contenido de un fichero
+tree		Muestra la jerarquía de la carpeta indicada
+whoami		Muestra el usuario con el que nos hemos conectado al terminal
+
+
+	--GUEST-ADDITIONS--
+	
+su -
+apt-get update
+apt-get upgrade
+apt-get install build-essential module-assistant
+m-a prepare
+	<>En este punto debes introducir el CD de instalación de las Guest Additions
+cd /media/cdrom
+sh ./VBoxLinuxAdditions.run
+usermod -a -G vboxsf tunombredeusuario
+reboot
+
+
+	--USUARIOS--
+	
+adduser [opctions] new_userName [group]			Añade un usuario a el sistema o a un grupo
+addgroup new_groupName							Añade un grupo al sistema
+
+deluser userName [group]						Elimina un usuario del sistema o de un grupo
+delgroup groupName								Elimina un grupo del sistema
+
+usermod [options] userName						Modifica la inforación de un usuario
+groupmod [options] groupName					Modifica la inforación de un grupo
+
+passwd userName									Modifica la contraseña de un usuario
+
+chage -M nDays userName							Modifica la fecha limite de una contraseña de un usuario
+
+
+	--PERMISOS--
+	
+ls -l											Lista los permisos del archivo
+	
+octal	
+	chmod (UGR)-> rwx ->[ r -> READ, w -> WRITE, x -> EXECUTE]  <-   fileName
+		rwx
+		111
+		7
+	
+caracter
+	chmod (ugo) (+-=) (rwx)	fileName			Añade, elimina o modifica los permisos a un archivo
+	
+chown fileName userName							Modifica el usuario propietario
+chgrp fileName groupName						Modifica el grupo propietario
+
+
+	--EVENTOS--
+
+jobs									Lista los procesos en segundo plano lanzados desde el terminal
+fg	 %nTarea							Manda procesos en segundo plano a primer plano
+&										Se pone al terminar un comando para que se ejecute en segundo plano
+Ctrl + z + bg							Se usa para que una tarea que ya se está ejecutando que se ponga en segundo plano
+at										Ejecuta un programa a una hora y fecha determinada
+crontab									Planifica la ejecución de un programa en cron
+watch									Ejecuta un programa de forma periódica
+pidof									Muestra el PID de un proceso indicando su nombre
+kill %nTarea							Comando para enviar la orden de apagado a un proceso
+pkill, killall							Envíauna señal a un proceso basándose en su nombre y atributo
+spgrep, ps, pstree						Visualiza información sobre los proceso
+shtop, top								Utilidades interactivas de gestión de procesos
+nice, renice							Permite lanzar un programa con una prioridad o cambiarla
+time									Muestra el tiempo que tarda en ejecutarse un programa
+
+
+systemctl start serviceName				Empieza un servicio
+systemctl stop serviceName				Para un servicio
+systemctl restart serviceName			Reinicia un servicio
+systemctl status serviceName			Muestra el estado de un servicio
+
+journalctl								Muestra todos los mensajes de registro
+journalctl -u serviceName				Muestra los mensajes de registro de un servicio
+journalctl -k							Muestra únicamente los mensajes del núcleo
+journalctl -f							Muestra los mensaje conforme van apareciendo
+
+systemctl list-dependencies graphical.target 		Muestra los servicios que se arrancarán cuando se inicie el sistema en modo gráfico
+systemctl list-sockets								Muestra los sockets y qué servicio activan
+systemctl get–default targetName					Muestra el nivel de ejecución (target) por defecto
+systemctl get–default graphical.target				Muestra el nivel de ejecución gráfico por defecto
+
+
+	--INFORMACION--
+
+tar -[options] NewTarFileName selectedFiles			Comprime los archivos seleccionados 
+	[options]={
+		"c":"create new .tar file",
+		"v":"show datailed information of the proccess",
+		"f":"file name",
+		"z":"compress to .gz",
+		"j":"compress to .gz2",
+	}
+	
+tar -[options] NewTarFileName -C folderName			Descomprime los archivos seleccionados 
+	[options]={
+		"x":"extract .tar file",
+		"v":"show datailed information of the proccess",
+		"z":"compress to .gz",
+		"j":"compress to .gz2"
+	}
+	
+7z a FileNametoCreate FilesToCompress				Comprime archivos a un 7z
+7z a -fileType FileNametoCreate FilesToCompress		Comprime archivos a un formato deseado
+
+parted 												Programa para editar las particiones
+fdisk -l 											Lista las particiones junto con su informacion
