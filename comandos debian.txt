@@ -144,3 +144,4 @@ tar -[options] NewTarFileName -C folderName			Descomprime los archivos seleccion
 
 parted 												Programa para editar las particiones
 fdisk -l 											Lista las particiones junto con su informacion
+htop												Ver uso del Ordenador
