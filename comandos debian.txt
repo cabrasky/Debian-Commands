@@ -102,6 +102,7 @@ spgrep, ps, pstree						Visualiza información sobre los proceso
 shtop, top								Utilidades interactivas de gestión de procesos
 nice, renice							Permite lanzar un programa con una prioridad o cambiarla
 time									Muestra el tiempo que tarda en ejecutarse un programa
+htop												Permite visualizar el uso de CPU y RAM
 
 
 systemctl start serviceName				Empieza un servicio
@@ -143,5 +144,10 @@ tar -[options] NewTarFileName -C folderName			Descomprime los archivos seleccion
 7z a -fileType FileNametoCreate FilesToCompress		Comprime archivos a un formato deseado
 
 parted 												Programa para editar las particiones
+	select diskDirectory							Selecciona el disco a usar
+	mkpart 											Crea una particiones
+	mktable											Crea una tabla de particiones
+	
 fdisk -l 											Lista las particiones junto con su informacion
-htop												Permite visualizar el uso de CPU y RAM
+ln fileName ResultFileName							Crea un enlace duro
+ls -s file Name ResultFileName						Crea un enlace simbolico
