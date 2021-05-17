@@ -66,6 +66,9 @@ groupmod [options] groupName					Modifica la inforación de un grupo
 
 passwd userName									Modifica la contraseña de un usuario
 
+sudo 											Te da los privilegios de root
+visudo 											Edita los privilegios de grupo sudo
+
 chage -M nDays userName							Modifica la fecha limite de una contraseña de un usuario
 
 
@@ -147,7 +150,7 @@ parted 												Programa para editar las particiones
 	select diskDirectory							Selecciona el disco a usar
 	mkpart 											Crea una particiones
 	mktable											Crea una tabla de particiones
-	
+
 fdisk -l 											Lista las particiones junto con su informacion
 ln fileName ResultFileName							Crea un enlace duro
 ls -s file Name ResultFileName						Crea un enlace simbolico
